@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/aria.ogg-19e911c3fbfad10e343ff9ec67f7af69.oggstr"
+
+[deps]
+
+source_file="res://envs/velvet/assets/audio/aria.ogg"
+dest_files=[ "res://.import/aria.ogg-19e911c3fbfad10e343ff9ec67f7af69.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="PersonaX"
-run/main_scene="res://levels/mainmenu/mainmenu.tscn"
+run/main_scene="res://menus/mainmenu/mainmenu.tscn"
 config/icon="res://icon.png"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
 
 [display]
 

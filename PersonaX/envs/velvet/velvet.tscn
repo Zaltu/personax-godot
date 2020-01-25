@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://envs/velvet/assets/audio/aria.ogg" type="AudioStream" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.33713, 0, -0.941458, 0, 1, 0, 0.941458, 0, -0.33713, -32.9331, 23.4766, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+mix_target = 1
+bus = "Music"

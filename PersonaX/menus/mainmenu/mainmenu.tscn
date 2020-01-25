@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://menus/mainmenu/scripts/new_game.gd" type="Script" id=1]
+[ext_resource path="res://menus/mainmenu/assets/2d/cover_logo_temp.png" type="Texture" id=2]
+[ext_resource path="res://menus/mainmenu/assets/2d/quit/mainmenu_quit.png" type="Texture" id=3]
+[ext_resource path="res://menus/mainmenu/assets/2d/quit/mainmenu_quit_pressed.png" type="Texture" id=4]
+[ext_resource path="res://menus/mainmenu/assets/2d/quit/mainmenu_quit_hover.png" type="Texture" id=5]
+[ext_resource path="res://menus/mainmenu/scripts/exit_game.gd" type="Script" id=6]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/mainmenu_newgame.png-c82cdd323050b47e58817d0aa8cdff2d.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/mainmenu_newgame_pressed.png-3d368400190c599a0fa69f4656db7323.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/mainmenu_newgame_hover.png-b36b66d55610123b072816e73ff2cb4b.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/mainmenu_loadgame.png-43a3a005647f1046b25b289109dc5d47.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/mainmenu_loadgame_pressed.png-6831c87f383ec0667c41acb42d1453b4.stex"
+
+[sub_resource type="StreamTexture" id=6]
+flags = 4
+load_path = "res://.import/mainmenu_loadgame_hover.png-79fe1962be27a2c673136103ecd501fb.stex"
+
+[node name="Main2D" type="Control"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="VMenuItems" type="VBoxContainer" parent="."]
+margin_top = 2.05054
+margin_right = 1920.0
+margin_bottom = 1082.05
+size_flags_vertical = 3
+custom_constants/separation = 150
+alignment = 1
+
+[node name="NewGame" type="TextureButton" parent="VMenuItems"]
+margin_top = 89.0
+margin_right = 1920.0
+margin_bottom = 179.0
+rect_min_size = Vector2( 200, 90 )
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 2 )
+texture_hover = SubResource( 3 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 1 )
+
+[node name="LoadGame" type="TextureButton" parent="VMenuItems"]
+margin_top = 329.0
+margin_right = 1920.0
+margin_bottom = 394.0
+rect_min_size = Vector2( 700, 65 )
+texture_normal = SubResource( 4 )
+texture_pressed = SubResource( 5 )
+texture_hover = SubResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="cover_logo_temp" type="TextureRect" parent="VMenuItems"]
+margin_top = 544.0
+margin_right = 1920.0
+margin_bottom = 794.0
+rect_min_size = Vector2( 0, 250 )
+texture = ExtResource( 2 )
+stretch_mode = 6
+
+[node name="Quit" type="TextureButton" parent="VMenuItems"]
+margin_top = 944.0
+margin_right = 1920.0
+margin_bottom = 989.0
+rect_min_size = Vector2( 700, 45 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 6 )
