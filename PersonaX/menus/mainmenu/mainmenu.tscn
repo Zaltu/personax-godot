@@ -32,8 +32,13 @@ flags = 4
 load_path = "res://.import/mainmenu_loadgame_hover.png-79fe1962be27a2c673136103ecd501fb.stex"
 
 [node name="Main2D" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_right = 1920.0
 margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VMenuItems" type="VBoxContainer" parent="."]
 margin_top = 2.05054
@@ -42,6 +47,9 @@ margin_bottom = 1082.05
 size_flags_vertical = 3
 custom_constants/separation = 150
 alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NewGame" type="TextureButton" parent="VMenuItems"]
 margin_top = 89.0
