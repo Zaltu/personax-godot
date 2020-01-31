@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://envs/velvet/assets/audio/aria.ogg" type="AudioStream" id=1]
 [ext_resource path="res://assets/chars/elizabeth/elizabeth.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/chars/igor/igor.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -19,6 +20,10 @@ mix_target = 1
 bus = "Music"
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.939961, 0.341282, 0, -0.341282, 0.939961, 0.535669, 23.4766, 29.0397 )
+transform = Transform( 1, 0, 0, 0, 0.984868, 0.173304, 0, -0.173304, 0.984868, -5.69353, 14.7044, 23.7596 )
 
 [node name="elizabeth" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.926529, 0, -0.376224, 0, 1, 0, 0.376224, 0, 0.926529, 4.59069, 0, 0 )
+
+[node name="igor" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53382, 0, 0 )
