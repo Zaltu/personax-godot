@@ -1,17 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://envs/velvet/assets/audio/aria.ogg" type="AudioStream" id=1]
 [ext_resource path="res://assets/chars/elizabeth/elizabeth.tscn" type="PackedScene" id=2]
 
+[sub_resource type="Environment" id=1]
+background_mode = 1
+ambient_light_color = Color( 1, 1, 1, 1 )
+
 [node name="Spatial" type="Spatial"]
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.939961, 0.341282, 0, -0.341282, 0.939961, 0.535669, 23.4766, 29.0397 )
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 autoplay = true
 mix_target = 1
 bus = "Music"
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.939961, 0.341282, 0, -0.341282, 0.939961, 0.535669, 23.4766, 29.0397 )
 
 [node name="elizabeth" parent="." instance=ExtResource( 2 )]
