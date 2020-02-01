@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://envs/velvet/assets/3d/velvetroom.glb" type="PackedScene" id=1]
+
+[node name="velvetroom" instance=ExtResource( 1 )]
+transform = Transform( 140, 0, 0, 0, 140, 0, 0, 0, 140, 0, 0, 0 )
+
+[node name="room" parent="." index="0"]
+transform = Transform( 0.0184708, 0, 0, 0, -1.19209e-09, -0.01, 0, 0.01, -1.19209e-09, 0, 0, 0 )
