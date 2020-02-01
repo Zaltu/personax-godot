@@ -20,10 +20,10 @@ mix_target = 1
 bus = "Music"
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.984868, 0.173304, 0, -0.173304, 0.984868, -5.69353, 14.7044, 23.7596 )
+transform = Transform( 1, 0, 0, 0, 0.984868, 0.173304, 0, -0.173304, 0.984868, -5.5, 14.704, 23.76 )
 
 [node name="elizabeth" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.926529, 0, -0.376224, 0, 1, 0, 0.376224, 0, 0.926529, 4.59069, 0, 0 )
 
 [node name="igor" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53382, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 0 )
