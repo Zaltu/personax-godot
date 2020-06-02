@@ -48,7 +48,7 @@ Godot and Blender, both being opensource, have better connectivity than other DC
 - In the same vein, match the scale of the object to the project you're working on
 - For some reason, most of the materials imported by the maxscript have altered Metallic and Roughness values. This results in some very ugly shading in Godot, so make sure to set all the __Metallic values to 0__, and all the __Roughness values to 1__. This will save time from having to edit them in Godot directly.
 - All the distributed models have very numerical IDs associated to them. You can rename meshes and animations here so they make more sense for your project
-- For ani animation that should be played looping, make sure to append `-loop` to the name! Otherwise it will not loop automatically in Godot and you will have to code (god forbid).
+- For any animation that should be played looping, make sure to append `-loop` to the name! Otherwise it will not loop automatically in Godot and you will have to code (god forbid).
 - Once you're ready, select `File > Export > glTF 2.0` and export a glTF format file. Default params should be fine.
 
 ### Import to Godot
