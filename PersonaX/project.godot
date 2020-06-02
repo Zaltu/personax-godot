@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="PersonaX"
-run/main_scene="res://menus/mainmenu/mainmenu.tscn"
+run/main_scene="res://ui/mainmenu/mainmenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+loading="*res://envs/loading/loading.tscn"
 
 [debug]
 
@@ -34,4 +38,5 @@ window/stretch/aspect="keep_width"
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

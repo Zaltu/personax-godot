@@ -1,28 +1,78 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://envs/velvet/assets/audio/aria.ogg" type="AudioStream" id=1]
-[ext_resource path="res://assets/chars/elizabeth/elizabeth.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/chars/igor/igor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/3d/chars/elizabeth/elizabeth.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/3d/chars/igor/igor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://envs/velvet/assets/3d/velvetroom.tscn" type="PackedScene" id=4]
+[ext_resource path="res://envs/velvet/demoVelvet.gd" type="Script" id=5]
+[ext_resource path="res://envs/velvet/assets/audio/welcome_clean.ogg" type="AudioStream" id=6]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 0.52
 
+[sub_resource type="Animation" id=2]
+resource_name = "Fade"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Fader:material/0:shader_param/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4, 3.2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.9, 0.5, 0.0 ]
+}
+
+[sub_resource type="PlaneMesh" id=3]
+
+[sub_resource type="Shader" id=4]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform float cutoff : hint_range(0.0, 1.0);
+uniform vec4 albedo : hint_color;
+
+void fragment()
+{
+	ALBEDO = albedo.rgb;
+	ALPHA = cutoff;
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/cutoff = 1.0
+shader_param/albedo = null
+
 [node name="Spatial" type="Spatial"]
+script = ExtResource( 5 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AriaOfTheSoul" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-autoplay = true
 mix_target = 1
 bus = "Music"
 
+[node name="Dialog" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "Voice"
+
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.984868, 0.173304, 0, -0.173304, 0.984868, -5.5, 14.704, 23.76 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
+anims/Fade = SubResource( 2 )
+
+[node name="Fader" type="MeshInstance" parent="Camera/AnimationPlayer"]
+transform = Transform( 5, 0, 0, 0, 0.173304, -4.92434, 0, 0.984868, 0.86652, -5.41823, 14.6631, 22.9864 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
 
 [node name="elizabeth" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.926529, 0, -0.376224, 0, 1, 0, 0.376224, 0, 0.926529, 4.59069, 0, 0 )
@@ -32,3 +82,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 0 )
 
 [node name="velvetroom" parent="." instance=ExtResource( 4 )]
 transform = Transform( 150, 0, 0, 0, 150, 0, 0, 0, 150, -5.18377, 0, 8.75942 )
+[connection signal="finished" from="Dialog" to="." method="_on_Dialog_finished"]
+[connection signal="animation_finished" from="Camera/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

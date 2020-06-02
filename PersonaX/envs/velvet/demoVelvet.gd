@@ -1,0 +1,28 @@
+extends Spatial
+
+var timer;
+var music_delay = 5
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	get_node("Dialog").play()
+
+
+func on_music_delay_timer_done():
+	timer.stop()
+	get_node("Camera/AnimationPlayer").play("Fade")
+
+func _on_Dialog_finished():
+	set_visible(true)
+	get_node("AriaOfTheSoul").play()
+	timer = Timer.new()
+	timer.set_wait_time(music_delay)
+	timer.connect("timeout", self, "on_music_delay_timer_done")
+	add_child(timer)
+	timer.start()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	# Hide the fader mesh so the viewport isn't rendering a fucking 0-alpha
+	# shader every god damn frame
+	get_node("Camera/AnimationPlayer/Fader").set_visible(false)

@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://envs/loading/assets/takeyoursheet.png" type="Texture" id=1]
+[ext_resource path="res://envs/loading/scripts/loading.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "TakeYourTime"
+length = 2.58333
+loop = true
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("TakeYourTimePlayer/TakeYourTime:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.58333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 62 ]
+}
+
+[node name="Loading" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TakeYourTimePlayer" type="AnimationPlayer" parent="."]
+autoplay = "TakeYourTime"
+anims/TakeYourTime = SubResource( 1 )
+
+[node name="TakeYourTime" type="Sprite" parent="TakeYourTimePlayer"]
+visible = false
+position = Vector2( 1789.39, 933.631 )
+scale = Vector2( 0.49711, 0.49711 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+
+[node name="CalendarRoll" type="HBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5

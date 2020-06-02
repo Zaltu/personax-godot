@@ -1,0 +1,17 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/NORMAL_ALT.png-01b48c78e2a7cbc2791e08a2199eef4a.res"
+group_file="res://assets/2d/chars/igor/igor.png"
+valid=true
+[deps]
+
+
+source_file="res://assets/2d/chars/igor/NORMAL_ALT.png"
+dest_files=[ "res://.import/NORMAL_ALT.png-01b48c78e2a7cbc2791e08a2199eef4a.res" ]
+
+[params]
+
+atlas_file="res://assets/2d/chars/igor/igor.png"
+import_mode=0
