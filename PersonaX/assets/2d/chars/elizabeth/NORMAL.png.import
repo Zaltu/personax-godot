@@ -1,0 +1,17 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/NORMAL.png-8910cf90074fcd284d5ed6c81bbadc11.res"
+group_file="res://assets/2d/chars/elizabeth/elizabeth.png"
+valid=true
+[deps]
+
+
+source_file="res://assets/2d/chars/elizabeth/NORMAL.png"
+dest_files=[ "res://.import/NORMAL.png-8910cf90074fcd284d5ed6c81bbadc11.res" ]
+
+[params]
+
+atlas_file="res://assets/2d/chars/elizabeth/elizabeth.png"
+import_mode=0
