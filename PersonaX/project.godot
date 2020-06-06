@@ -22,6 +22,8 @@ config/icon="res://icon.png"
 [autoload]
 
 loading="*res://envs/loading/loading.tscn"
+state="*res://scripts/state.gd"
+inputhandler="*res://scripts/inputhandler.gd"
 
 [debug]
 

@@ -29,9 +29,4 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 	# shader every god damn frame
 	get_node("Camera/AnimationPlayer/Fader").set_visible(false)
 	add_child(textbox_scene)
-	textbox_scene.display_text({
-		"speaker": "Igor",
-		"text": "My name is Igor",
-		"emotion": "NORMAL",
-		"alt": true
-	})
+	textbox_scene.display_text(state.getUpdate())

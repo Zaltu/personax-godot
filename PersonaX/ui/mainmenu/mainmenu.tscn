@@ -7,7 +7,6 @@
 [ext_resource path="res://ui/mainmenu/assets/2d/quit/mainmenu_quit_hover.png" type="Texture" id=5]
 [ext_resource path="res://ui/mainmenu/scripts/exit_game.gd" type="Script" id=6]
 
-
 [sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/mainmenu_newgame.png-c82cdd323050b47e58817d0aa8cdff2d.stex"

@@ -3,6 +3,7 @@ extends Control
 
 func display_text(textevent):
 	# Set the name of the speaker
+	print(textevent)
 	get_node("Image/Speaker").set_text(textevent["speaker"])
 	# Set the actual text
 	# TODO vn-style text fade w/ display %
