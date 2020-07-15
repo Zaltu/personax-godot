@@ -1,15 +1,36 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/textbox/scripts/SpeakerSprite.gd" type="Script" id=1]
 [ext_resource path="res://ui/textbox/scripts/textbox.gd" type="Script" id=2]
 [ext_resource path="res://ui/textbox/assets/textbox.png" type="Texture" id=3]
 [ext_resource path="res://ui/textbox/assets/speakerfont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://ui/textbox/assets/textfont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ui/textbox/assets/boxarrow.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ClickerFlicker"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Image/boxarrow:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Textbox" type="Control"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.54761
+margin_top = -0.773743
+margin_right = 1.54761
+margin_bottom = -0.773682
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -65,3 +86,25 @@ custom_colors/font_color = Color( 0.52549, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="boxarrow" type="TextureRect" parent="Image"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.85
+anchor_top = 0.4
+anchor_right = 0.85
+anchor_bottom = 0.4
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Voice"
+
+[node name="FlickerManager" type="AnimationPlayer" parent="."]
+autoplay = "ClickerFlicker"
+anims/ClickerFlicker = SubResource( 1 )
+
+[node name="DisplayTwext" type="Tween" parent="."]
+[connection signal="tween_completed" from="DisplayTwext" to="." method="_on_DisplayTwext_tween_completed"]

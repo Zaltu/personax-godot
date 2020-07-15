@@ -58,9 +58,9 @@ __meta__ = {
 }
 
 [node name="NewGame" type="TextureButton" parent="VMenuItems"]
-margin_top = 89.0
+margin_top = 197.0
 margin_right = 1920.0
-margin_bottom = 179.0
+margin_bottom = 287.0
 rect_min_size = Vector2( 200, 90 )
 texture_normal = SubResource( 1 )
 texture_pressed = SubResource( 2 )
@@ -70,6 +70,7 @@ stretch_mode = 5
 script = ExtResource( 1 )
 
 [node name="LoadGame" type="TextureButton" parent="VMenuItems"]
+visible = false
 margin_top = 329.0
 margin_right = 1920.0
 margin_bottom = 394.0
@@ -81,17 +82,17 @@ expand = true
 stretch_mode = 5
 
 [node name="cover_logo_temp" type="TextureRect" parent="VMenuItems"]
-margin_top = 544.0
+margin_top = 437.0
 margin_right = 1920.0
-margin_bottom = 794.0
+margin_bottom = 687.0
 rect_min_size = Vector2( 0, 250 )
 texture = ExtResource( 2 )
 stretch_mode = 6
 
 [node name="Quit" type="TextureButton" parent="VMenuItems"]
-margin_top = 944.0
+margin_top = 837.0
 margin_right = 1920.0
-margin_bottom = 989.0
+margin_bottom = 882.0
 rect_min_size = Vector2( 700, 45 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )

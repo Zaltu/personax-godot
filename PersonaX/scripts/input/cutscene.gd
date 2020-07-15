@@ -3,13 +3,17 @@ extends Node
 var _index = 0
 
 func process_update(textevent):
-	# Textbox node shoudl exist if we're getting cutscene context events.
+	# Textbox node should exist if we're getting cutscene context events.
 	# The "Spatial" here is :monkaS: ngl
 	get_node("/root/Spatial/Textbox").display_text(textevent)
 	
 
 func processInput(event):
 	if event.is_action_pressed("ui_accept"):
+		if get_node("/root/Spatial/Textbox/DisplayTwext").is_active():
+			get_node("/root/Spatial/Textbox/DisplayTwext").remove_all()
+			get_node("/root/Spatial/Textbox")._on_DisplayTwext_tween_completed(null, null)
+			return # !!!!!!
 		var update = state.sendStateEvent({"key": "cutscene", "index": _index})
 		inputhandler.process_update(update)
 	elif event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down"):

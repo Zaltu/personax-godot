@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Null.ogg-19ca262c7abe90131909096dcd831416.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/cutscene/velvet_demo/Null.ogg"
+dest_files=[ "res://.import/Null.ogg-19ca262c7abe90131909096dcd831416.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
