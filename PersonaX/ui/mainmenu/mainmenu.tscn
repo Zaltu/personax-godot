@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/mainmenu/scripts/new_game.gd" type="Script" id=1]
 [ext_resource path="res://ui/mainmenu/assets/2d/cover_logo_temp.png" type="Texture" id=2]
@@ -6,30 +6,9 @@
 [ext_resource path="res://ui/mainmenu/assets/2d/quit/mainmenu_quit_pressed.png" type="Texture" id=4]
 [ext_resource path="res://ui/mainmenu/assets/2d/quit/mainmenu_quit_hover.png" type="Texture" id=5]
 [ext_resource path="res://ui/mainmenu/scripts/exit_game.gd" type="Script" id=6]
-
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/mainmenu_newgame.png-c82cdd323050b47e58817d0aa8cdff2d.stex"
-
-[sub_resource type="StreamTexture" id=2]
-flags = 4
-load_path = "res://.import/mainmenu_newgame_pressed.png-3d368400190c599a0fa69f4656db7323.stex"
-
-[sub_resource type="StreamTexture" id=3]
-flags = 4
-load_path = "res://.import/mainmenu_newgame_hover.png-b36b66d55610123b072816e73ff2cb4b.stex"
-
-[sub_resource type="StreamTexture" id=4]
-flags = 4
-load_path = "res://.import/mainmenu_loadgame.png-43a3a005647f1046b25b289109dc5d47.stex"
-
-[sub_resource type="StreamTexture" id=5]
-flags = 4
-load_path = "res://.import/mainmenu_loadgame_pressed.png-6831c87f383ec0667c41acb42d1453b4.stex"
-
-[sub_resource type="StreamTexture" id=6]
-flags = 4
-load_path = "res://.import/mainmenu_loadgame_hover.png-79fe1962be27a2c673136103ecd501fb.stex"
+[ext_resource path="res://ui/mainmenu/assets/2d/newgame/mainmenu_newgame.png" type="Texture" id=7]
+[ext_resource path="res://ui/mainmenu/assets/2d/newgame/mainmenu_newgame_pressed.png" type="Texture" id=8]
+[ext_resource path="res://ui/mainmenu/assets/2d/newgame/mainmenu_newgame_hover.png" type="Texture" id=9]
 
 [node name="Main2D" type="Control"]
 anchor_right = 1.0
@@ -62,9 +41,9 @@ margin_top = 197.0
 margin_right = 1920.0
 margin_bottom = 287.0
 rect_min_size = Vector2( 200, 90 )
-texture_normal = SubResource( 1 )
-texture_pressed = SubResource( 2 )
-texture_hover = SubResource( 3 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 1 )
@@ -75,9 +54,6 @@ margin_top = 329.0
 margin_right = 1920.0
 margin_bottom = 394.0
 rect_min_size = Vector2( 700, 65 )
-texture_normal = SubResource( 4 )
-texture_pressed = SubResource( 5 )
-texture_hover = SubResource( 6 )
 expand = true
 stretch_mode = 5
 

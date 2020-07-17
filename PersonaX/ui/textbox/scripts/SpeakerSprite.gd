@@ -25,7 +25,7 @@ func set_speaker_sprite(speaker, emotion, eyes=false):
 		# Hide when changing to avoid the resize frames maybe
 		set_visible(false)
 		# Get path to atlastexture resource
-		var this_resource = base_sprite_path.format([speaker, emotion.to_upper()])
+		var this_resource = base_sprite_path.format([speaker.to_lower(), emotion.to_upper()])
 		set_texture(load(this_resource))
 		bottom_corner = get_rect().end
 		newx = screen_size.x - (bottom_corner.x * scale_factor)

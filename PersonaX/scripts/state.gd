@@ -1,8 +1,17 @@
 extends Node
 
+const LUA_PERSONAX_PATH = "package.path = package.path..';{0}/model/?.lua'";
+const MY_LUA_PATH = "package.path = package.path..';{0}/extlib/lua_path/?.lua'";
+const MY_LUA_CPATH = "package.cpath = package.cpath..';{0}/extlib/lua_cpath/?.dll'";
+const GLOBAL_DATAPATH = "_G.DATAPATH = '{0}/model/data/'";
+
+#K:/Git/personax-lua-src
+onready var LOCAL_MODEL_PATH = "K:/Git/personax-lua-src"#OS.get_executable_path().get_base_dir().replace("\\", "/")
+
 var state
 var update
 var context
+
 
 func set_context(_update):
 	# Split into separate function for better error handling (TODO)
@@ -26,6 +35,12 @@ func getUpdate():
 func init():
 	if not state:
 		state = PXLua.new()
+		state.setupLuaState(
+			LUA_PERSONAX_PATH.format([LOCAL_MODEL_PATH]),
+			MY_LUA_PATH.format([LOCAL_MODEL_PATH]),
+			MY_LUA_CPATH.format([LOCAL_MODEL_PATH]),
+			GLOBAL_DATAPATH.format([LOCAL_MODEL_PATH])
+		)
 		print("Godot State Initialized\n", state)
 	else:
 		print("State already initialized.")
