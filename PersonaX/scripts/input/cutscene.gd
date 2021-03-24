@@ -3,7 +3,6 @@ extends Node
 var _index = 0
 
 func process_update(textevent):
-	# Textbox node should exist if we're getting cutscene context events.
 	# The "Spatial" here is :monkaS: ngl
 	get_node("/root/Spatial/Textbox").display_text(textevent)
 	
