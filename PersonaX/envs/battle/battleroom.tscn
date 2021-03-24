@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/envs/battle/combattemp.glb" type="PackedScene" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+
+[node name="battleroom" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 1.5, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="Walls" parent="." index="0"]
+material/0 = SubResource( 1 )
+
+[node name="Floor" parent="." index="1"]
+material/0 = SubResource( 2 )

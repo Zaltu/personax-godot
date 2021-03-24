@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/hecatoncheires.glb-524c512e6cf9c7063ba1eeb5c08dd098.scn"
+path="res://.import/combattemp.glb-685f78c9f9c5fa50574b4673861f3817.scn"
 
 [deps]
 
-source_file="res://assets/3d/personas/HangedMan/hecatoncheires/hecatoncheires.glb"
-dest_files=[ "res://.import/hecatoncheires.glb-524c512e6cf9c7063ba1eeb5c08dd098.scn" ]
+source_file="res://assets/envs/battle/combattemp.glb"
+dest_files=[ "res://.import/combattemp.glb-685f78c9f9c5fa50574b4673861f3817.scn" ]
 
 [params]
 

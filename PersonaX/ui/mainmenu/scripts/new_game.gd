@@ -13,7 +13,9 @@ func __TEMP_velvet_demo():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	state.init()  # luigiburn
 	state.start()  # luigiburn
-	loading.goto_scene("envs/velvet/velvet.tscn")
+	#print(state.getUpdate())  # Can cause output overflow...
+	loading.goto_scene("envs/battle/battle.tscn")
+	#loading.goto_scene("envs/velvet/velvet.tscn")
 
 
 #func list_files_in_directory(path):

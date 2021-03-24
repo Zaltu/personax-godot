@@ -1,14 +1,14 @@
 extends Node
 
-#onready var freeroam = load("scripts/input/EMPTY.gd").instance()
-#onready var dungeon = load("scripts/input/EMPTY.gd").instance()
+#onready var freeroam = load("scripts/input/EMPTY.gd").new()
+#onready var dungeon = load("scripts/input/EMPTY.gd").new()
 onready var cutscene = load("scripts/input/cutscene.gd").new()
-#onready var link = load("scripts/input/EMPTY.gd").instance()
-#onready var inline = load("scripts/input/EMPTY.gd").instance()
-#onready var shop = load("scripts/input/EMPTY.gd").instance()
-#onready var velvet = load("scripts/input/EMPTY.gd").instance()
-#onready var battle = load("scripts/input/EMPTY.gd").instance()
-#onready var calendar = load("scripts/input/EMPTY.gd").instance()
+#onready var link = load("scripts/input/EMPTY.gd").new()
+#onready var inline = load("scripts/input/EMPTY.gd").new()
+#onready var shop = load("scripts/input/EMPTY.gd").new()
+#onready var velvet = load("scripts/input/EMPTY.gd").new()
+onready var battle = load("scripts/input/cutscene.gd").new()
+#onready var calendar = load("scripts/input/EMPTY.gd").new()
 
 onready var EMPTY = load("scripts/input/EMPTY.gd").new()
 

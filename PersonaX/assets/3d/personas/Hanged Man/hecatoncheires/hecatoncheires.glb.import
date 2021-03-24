@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/cuchulainn.glb-7dfde896286f9165ac80eeed79e8e220.scn"
+path="res://.import/hecatoncheires.glb-9a48591a8b716e26cbe4d1ad9d40428e.scn"
 
 [deps]
 
-source_file="res://assets/3d/personas/HangedMan/cuchulainn/cuchulainn.glb"
-dest_files=[ "res://.import/cuchulainn.glb-7dfde896286f9165ac80eeed79e8e220.scn" ]
+source_file="res://assets/3d/personas/Hanged Man/hecatoncheires/hecatoncheires.glb"
+dest_files=[ "res://.import/hecatoncheires.glb-9a48591a8b716e26cbe4d1ad9d40428e.scn" ]
 
 [params]
 
