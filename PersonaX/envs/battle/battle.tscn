@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://envs/battle/battleroom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://envs/battle/demoBattle.gd" type="Script" id=2]
+[ext_resource path="res://envs/battle/BattleCamera.gd" type="Script" id=3]
 
 [node name="battle" type="Spatial"]
 script = ExtResource( 2 )
 
 [node name="battleroom" parent="." instance=ExtResource( 1 )]
 
-[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 69.447, 0 )
+[node name="BattleCamera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 70, 0 )
 visible = false
+script = ExtResource( 3 )
