@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/combattemp.glb-685f78c9f9c5fa50574b4673861f3817.scn"
+path="res://.import/combattemp.glb-35f42d37505ed471956922867b29fd78.scn"
 
 [deps]
 
-source_file="res://assets/envs/battle/combattemp.glb"
-dest_files=[ "res://.import/combattemp.glb-685f78c9f9c5fa50574b4673861f3817.scn" ]
+source_file="res://envs/battle/assets/3d/combattemp.glb"
+dest_files=[ "res://.import/combattemp.glb-35f42d37505ed471956922867b29fd78.scn" ]
 
 [params]
 

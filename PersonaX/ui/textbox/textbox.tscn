@@ -99,9 +99,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
-bus = "Voice"
-
 [node name="FlickerManager" type="AnimationPlayer" parent="."]
 autoplay = "ClickerFlicker"
 anims/ClickerFlicker = SubResource( 1 )

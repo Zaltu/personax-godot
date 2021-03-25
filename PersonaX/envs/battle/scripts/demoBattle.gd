@@ -1,5 +1,7 @@
 extends Spatial
 
+const BATTLE_MUSIC = "res://envs/battle/assets/audio/massdestruction.ogg"
+
 # Spacers should be calculated dynamically, TODO
 # Char name, char name
 const PARTY_RES_PATH = "res://assets/3d/chars/{0}/{1}.glb"
@@ -34,6 +36,7 @@ func _ready():
 		# -1 cause Lua omegalul
 		spawn_participant(update["participants"][ienemy-1], enemylen, false)
 	
+	audio.play_music(BATTLE_MUSIC)
 	activate_camera(target)
 	process_turns(update)
 
@@ -42,7 +45,6 @@ func spawn_participant(participant, listlength, ispartymember):
 	# This will need to be cleaned up when the real enemy resource structure
 	# is available
 	if ispartymember:
-		print("Loading " + PARTY_RES_PATH.format([participant["name"], participant["name"]]))
 		var partymodel = load(
 			PARTY_RES_PATH.format([
 				participant["name"].to_lower(),
@@ -55,13 +57,7 @@ func spawn_participant(participant, listlength, ispartymember):
 		partymodel.translate(Vector3(xoffset, 0, PARTY_Z_OFFSET))
 		partymodel.scale_object_local(Vector3(0.33, 0.33, 0.33))
 		partymodel.look_at(Vector3(0, 0, ENEMY_Z_OFFSET), Vector3(0, 1, 0))
-		#partymodel.rotate_object_local(Vector3(0, 1, 0), PI)
 	else:
-		print("Loading " + PERSONA_RES_PATH.format([
-				participant["persona"]["arcana"],
-				participant["name"].to_lower(),
-				participant["name"].to_lower()
-			]))
 		var enemymodel = load(
 			PERSONA_RES_PATH.format([
 				participant["persona"]["arcana"],
@@ -75,7 +71,6 @@ func spawn_participant(participant, listlength, ispartymember):
 		enemymodel.translate(Vector3(xoffset, 0, ENEMY_Z_OFFSET))
 		enemymodel.scale_object_local(Vector3(3, 3, 3))
 		enemymodel.look_at(Vector3(0, 0, PARTY_Z_OFFSET), Vector3(0, 1, 0))
-		#enemymodel.rotate_object_local(Vector3(0, 1, 0), PI)
 
 
 func activate_camera(target):

@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://envs/velvet/assets/audio/aria.ogg" type="AudioStream" id=1]
 [ext_resource path="res://assets/3d/chars/elizabeth/elizabeth.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/3d/chars/igor/igor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://envs/velvet/assets/3d/velvetroom.tscn" type="PackedScene" id=4]
 [ext_resource path="res://envs/velvet/demoVelvet.gd" type="Script" id=5]
-[ext_resource path="res://envs/velvet/assets/audio/welcome_clean.ogg" type="AudioStream" id=6]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -54,15 +52,6 @@ script = ExtResource( 5 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="AriaOfTheSoul" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
-mix_target = 1
-bus = "Music"
-
-[node name="Dialog" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-bus = "Voice"
-
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.984868, 0.173304, 0, -0.173304, 0.984868, -5.5, 14.704, 23.76 )
 
@@ -82,5 +71,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 0 )
 
 [node name="velvetroom" parent="." instance=ExtResource( 4 )]
 transform = Transform( 150, 0, 0, 0, 150, 0, 0, 0, 150, -5.18377, 0, 8.75942 )
-[connection signal="finished" from="Dialog" to="." method="_on_Dialog_finished"]
 [connection signal="animation_finished" from="Camera/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

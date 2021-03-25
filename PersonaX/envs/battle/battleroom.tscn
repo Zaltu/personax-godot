@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/envs/battle/combattemp.glb" type="PackedScene" id=1]
+[ext_resource path="res://envs/battle/assets/3d/combattemp.glb" type="PackedScene" id=1]
+
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.54902, 0.0627451, 0.0117647, 1 )

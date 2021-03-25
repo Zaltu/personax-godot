@@ -55,11 +55,7 @@ func _try_audio(textevent):
 	if not ResourceLoader.exists(path):
 		# No voice file for this line
 		return
-	var audioplayer = get_node("AudioPlayer")
-	audioplayer.set_stream(
-		load(path)
-	)
-	audioplayer.play()
+	audio.play_dialog(path)
 
 
 

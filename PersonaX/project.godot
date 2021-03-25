@@ -24,6 +24,7 @@ config/icon="res://icon.png"
 loading="*res://envs/loading/loading.tscn"
 state="*res://scripts/state.gd"
 inputhandler="*res://scripts/inputhandler.gd"
+audio="*res://scripts/audio.gd"
 
 [debug]
 
