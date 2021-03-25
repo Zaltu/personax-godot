@@ -22,8 +22,7 @@ func _ready():
 	# We assume that the GSV is already in the battle context when Godot is
 	# asked to display it.
 	var update = state.getUpdate()
-	# Fetch list of participants, both allies and enemies
-	var participants = update["participants"]
+
 	var partylen = len(update["iparty"])
 	var enemylen = len(update["ienemy"])
 	var target
@@ -79,5 +78,5 @@ func activate_camera(target):
 	cam.set_interpolation_enabled(true)
 	
 
-func process_turns(full_update):
+func process_turns(_full_update):
 	pass
