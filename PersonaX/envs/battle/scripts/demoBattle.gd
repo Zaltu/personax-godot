@@ -14,9 +14,13 @@ const PERSONA_RES_PATH = "res://assets/3d/personas/{0}/{1}/{2}.glb"
 const ENEMY_Z_OFFSET = -10
 const ENEMY_SPACER = 20
 
+const music_delay = 4.22
+
 onready var party_models = []
 onready var enemy_models = []
 onready var cam = get_node("BattleCamera")
+
+var timer
 
 func _ready():
 	# We assume that the GSV is already in the battle context when Godot is
@@ -34,10 +38,15 @@ func _ready():
 	for ienemy in update["ienemy"]:
 		# -1 cause Lua omegalul
 		spawn_participant(update["participants"][ienemy-1], enemylen, false)
-	
+
+	setup_battle_menu(update)
 	audio.play_music(BATTLE_MUSIC)
 	activate_camera(target)
-	process_turns(update)
+	timer = Timer.new()
+	timer.set_wait_time(music_delay)
+	timer.connect("timeout", self, "_on_music_delay_timer_done")
+	add_child(timer)
+	timer.start()
 
 func spawn_participant(participant, listlength, ispartymember):
 	# A bit messy since the "real" enemies won't be in the persona list.
@@ -71,12 +80,69 @@ func spawn_participant(participant, listlength, ispartymember):
 		enemymodel.scale_object_local(Vector3(3, 3, 3))
 		enemymodel.look_at(Vector3(0, 0, PARTY_Z_OFFSET), Vector3(0, 1, 0))
 
-
 func activate_camera(target):
 	cam.set_visible(true)
 	cam.sift_over_to(target, Vector3(0, 0, ENEMY_Z_OFFSET))
 	cam.set_interpolation_enabled(true)
-	
+
+
+func setup_battle_menu(update):
+	# Get current persona's spells
+	var currentparticipant = update["participants"][update["open"]-1]  # -1 cause lua omegalul
+	var spell_list = currentparticipant["persona"]["spellDeck"]
+	while "" in spell_list:  # Oof
+		spell_list.erase("")
+	var spell_use_list = []
+	for spell in spell_list:
+		spell_use_list.append({spell: "spelltargeting"})
+	print(currentparticipant)
+	# For persona swapping
+	var persona_list = currentparticipant.get("personadeck", null)
+	var persona_use_list = []
+	if persona_list:
+		for personaname in persona_list:
+			persona_use_list.append({personaname: "changepersonas"})
+	var struc = [
+		{"Attack": "attacktargeting"},
+		{"Skill": spell_use_list},
+		{"Persona": persona_use_list if persona_use_list else null},
+		{"Guard": "guarding"},
+		{"Item": null},
+		{"Scan": "scantargeting"}
+	]
+	var menunode = get_node("BattleMenu")
+	menunode.setup_menu(_nodify(struc))
+
+
+func _nodify(struc, parent=null):
+	if not struc:
+		return []
+	var newnodes = []
+	if struc is String:
+		newnodes.append(load("res://ui/textbox/elements/selectable.tscn").instance())
+		if parent:
+			parent.addChild(newnodes[-1])
+		newnodes[-1].initialize(struc, parent)
+		return newnodes
+	for entry in struc:
+		newnodes.append(load("res://ui/textbox/elements/selectable.tscn").instance())
+		if parent:
+			parent.addChild(newnodes[-1])
+		newnodes[-1].initialize(entry.keys()[-1], parent)
+		newnodes += _nodify(entry.values()[-1], newnodes[-1])
+	return newnodes
+
+func _on_music_delay_timer_done():
+	timer.stop()
+	get_node("BattleMenu").set_visible(true)
+	process_turns(state.getUpdate())
+
+
+func targetting():
+	get_node("BattleMenu").set_visible(false)
+	get_node("BattleMenu").selection_back()
+	print("targetting...")
+	get_node("BattleMenu").set_visible(true)
 
 func process_turns(_full_update):
 	pass

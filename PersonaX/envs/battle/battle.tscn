@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://envs/battle/battleroom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://envs/battle/scripts/demoBattle.gd" type="Script" id=2]
 [ext_resource path="res://envs/battle/scripts/BattleCamera.gd" type="Script" id=3]
+[ext_resource path="res://ui/textbox/genericmenu.tscn" type="PackedScene" id=4]
 
 [node name="battle" type="Spatial"]
 script = ExtResource( 2 )
@@ -13,3 +14,6 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 70, 0 )
 visible = false
 script = ExtResource( 3 )
+
+[node name="BattleMenu" parent="." instance=ExtResource( 4 )]
+visible = false

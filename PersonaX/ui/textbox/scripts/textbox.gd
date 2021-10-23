@@ -12,7 +12,7 @@ func display_text(textevent):
 	# Set the name of the speaker
 	print(textevent)
 	get_node("Image/Speaker").set_text(textevent["speaker"])
-	
+
 	# Set the actual text
 	# TODO vn-style text fade w/ display %
 	var textnode = get_node("Image/Text")
@@ -25,7 +25,7 @@ func display_text(textevent):
 		textevent["text"].length()/TEXT_SPEED_VALUE
 	)
 	twext.start()
-	
+
 	var speaker_node = get_node("SpeakerSprite")
 	if textevent["speaker"] == null:
 		get_node("SpeakerSprite").set_visible(false)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/textbox/assets/textboxtop.png" type="Texture" id=1]
+[ext_resource path="res://ui/textbox/assets/textboxbottom.png" type="Texture" id=2]
+[ext_resource path="res://ui/overwrite/VBoxContainer.gd" type="Script" id=3]
+[ext_resource path="res://ui/overwrite/VBoxContainer.tscn" type="PackedScene" id=4]
+
+[node name="VBoxContainer" type="Control"]
+anchor_left = 0.6
+anchor_top = 0.2
+anchor_right = 0.95
+anchor_bottom = 0.55
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopCurve" type="TextureRect" parent="."]
+texture = ExtResource( 1 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" parent="." instance=ExtResource( 4 )]
+anchor_right = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="BottomCurve" type="TextureRect" parent="."]
+margin_top = 12.0
+margin_right = 672.0
+margin_bottom = 12.0
+texture = ExtResource( 2 )
+stretch_mode = 6

@@ -23,7 +23,7 @@ func _ready():
 	dialog.connect("finished", self, "_on_dialog_finished")
 
 	# Add all to base scene
-	get_node("/root").call_deferred("add_child", music)
+	#get_node("/root").call_deferred("add_child", music)
 	get_node("/root").call_deferred("add_child", dialog)
 	get_node("/root").call_deferred("add_child", sfx)
 	get_node("/root").call_deferred("add_child", tween_in)
