@@ -56,6 +56,9 @@ func selection_enter():
 	var children = selectables[selectedindex].getChildren()
 	if not children:
 		return
+	if children is FuncRef:
+		children.call_func(selectables[selectedindex].text)
+		return
 	wipe_menu()
 	#if nextlevel[selectedindex] is FuncRef:
 	#	nextlevel[selectedindex].call_func()

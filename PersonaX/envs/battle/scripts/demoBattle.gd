@@ -16,9 +16,25 @@ const ENEMY_SPACER = 20
 
 const music_delay = 4.22
 
+
+# Target icon generator
+const TARGETMANAGER = preload("targetnode.gd")
+onready var TargetManager = TARGETMANAGER.new()
+
+
 onready var party_models = []
 onready var enemy_models = []
 onready var cam = get_node("BattleCamera")
+
+var struc = [
+		{"Attack": null},#funcref(self, "displaytarget")},  TODO
+		{"Skill": null},  # Populated dynamically
+		{"Persona": null},  # Populated dynamically
+		{"Guard": funcref(self, "guarding")},
+		{"Item": null},  # Populated dynamically TODO
+		{"Scan": null}  # TODO
+	]
+var targetting = false
 
 var timer
 
@@ -26,6 +42,9 @@ func _ready():
 	# We assume that the GSV is already in the battle context when Godot is
 	# asked to display it.
 	var update = state.getUpdate()
+	
+	# The TargetManager has no visible elements itself. Add it here.
+	add_child(TargetManager)
 
 	var partylen = len(update["iparty"])
 	var enemylen = len(update["ienemy"])
@@ -94,37 +113,29 @@ func setup_battle_menu(update):
 		spell_list.erase("")
 	var spell_use_list = []
 	for spell in spell_list:
-		spell_use_list.append({spell: "spelltargeting"})
+		spell_use_list.append({spell: funcref(self, "displaytarget")})
 	print(currentparticipant)
 	# For persona swapping
 	var persona_list = currentparticipant.get("personadeck", null)
 	var persona_use_list = []
 	if persona_list:
 		for personaname in persona_list:
-			persona_use_list.append({personaname: "changepersonas"})
-	var struc = [
-		{"Attack": "attacktargeting"},
-		{"Skill": spell_use_list},
-		{"Persona": persona_use_list if persona_use_list else null},
-		{"Guard": "guarding"},
-		{"Item": null},
-		{"Scan": "scantargeting"}
-	]
+			persona_use_list.append({personaname: null})
+	struc[1]["Skill"] = spell_use_list  # hard-coded index
+	struc[2]["Persona"] = persona_use_list if persona_use_list else null  # hard-coded index
 	var menunode = get_node("BattleMenu")
 	menunode.setup_menu(_nodify(struc))
 
 
-func _nodify(struc, parent=null):
-	if not struc:
+func _nodify(pstruc, parent=null):
+	if not pstruc:
+		return []
+	if pstruc is FuncRef:
+		if parent:
+			parent.addChild(pstruc)
 		return []
 	var newnodes = []
-	if struc is String:
-		newnodes.append(load("res://ui/textbox/elements/selectable.tscn").instance())
-		if parent:
-			parent.addChild(newnodes[-1])
-		newnodes[-1].initialize(struc, parent)
-		return newnodes
-	for entry in struc:
+	for entry in pstruc:
 		newnodes.append(load("res://ui/textbox/elements/selectable.tscn").instance())
 		if parent:
 			parent.addChild(newnodes[-1])
@@ -138,11 +149,28 @@ func _on_music_delay_timer_done():
 	process_turns(state.getUpdate())
 
 
-func targetting():
+func displaytarget(spellname):  # Spellname is sent to model to determine target types
 	get_node("BattleMenu").set_visible(false)
-	get_node("BattleMenu").selection_back()
 	print("targetting...")
+	var spellinfo = state.sendStateEvent(_fetchSpellDataEvent(spellname))
+	if not spellinfo.get("target"):
+		get_node("BattleMenu").set_visible(true)
+		return
+	print(spellinfo["target"])
+	TargetManager.LOCK_ON[spellinfo["target"]].call_func(party_models, enemy_models)
+	self.targetting = true  # For input management
+
+func _fetchSpellDataEvent(spellname):
+	return {
+		"key": "battle.spellrequest",
+		"spellDataRequest": spellname
+	}
+
+func revert_targetting():
+	TargetManager.free_resources()
 	get_node("BattleMenu").set_visible(true)
+	self.targetting = false  # For input management
+
 
 func process_turns(_full_update):
 	pass
