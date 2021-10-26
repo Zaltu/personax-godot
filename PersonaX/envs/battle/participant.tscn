@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://envs/battle/TargetOverlay.tscn" type="PackedScene" id=1]
+[ext_resource path="res://envs/battle/scripts/participant.gd" type="Script" id=2]
+
+[node name="Participant" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Target" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+visible = false

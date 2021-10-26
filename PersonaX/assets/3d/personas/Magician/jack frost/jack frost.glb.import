@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/jackfrost.glb-6e3bac8e83348bd6dfad93b3e45e748d.scn"
+path="res://.import/jack frost.glb-2e4ab1dcfc56b9fc0890769c8b808d0c.scn"
 
 [deps]
 
-source_file="res://assets/3d/personas/Magician/jackfrost/jackfrost.glb"
-dest_files=[ "res://.import/jackfrost.glb-6e3bac8e83348bd6dfad93b3e45e748d.scn" ]
+source_file="res://assets/3d/personas/Magician/jack frost/jack frost.glb"
+dest_files=[ "res://.import/jack frost.glb-2e4ab1dcfc56b9fc0890769c8b808d0c.scn" ]
 
 [params]
 

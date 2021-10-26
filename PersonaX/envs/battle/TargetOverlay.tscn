@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://envs/battle/scripts/TargetArrow.gd" type="Script" id=1]
 [ext_resource path="res://envs/battle/assets/2d/targetarrow.png" type="Texture" id=2]
+[ext_resource path="res://envs/battle/Healthbar.tscn" type="PackedScene" id=3]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("Viewport")
 
 [node name="Target" type="Spatial"]
 script = ExtResource( 1 )
@@ -12,5 +16,19 @@ billboard = 1
 double_sided = false
 texture = ExtResource( 2 )
 
-[node name="Healthbar" type="Sprite3D" parent="."]
-visible = false
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 840, 75 )
+transparent_bg = true
+handle_input_locally = false
+hdr = false
+usage = 0
+render_target_v_flip = true
+gui_disable_input = true
+
+[node name="TextureProgress" parent="Viewport" instance=ExtResource( 3 )]
+
+[node name="Window" type="Sprite3D" parent="."]
+centered = false
+billboard = 1
+double_sided = false
+texture = SubResource( 1 )

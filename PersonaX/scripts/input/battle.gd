@@ -21,3 +21,9 @@ func processInput(event):
 	elif get_node("/root/battle").targetting:
 		if event.is_action_pressed("ui_back"):
 			get_node("/root/battle").revert_targetting()
+		elif event.is_action_pressed("ui_right"):
+			get_node("/root/battle").change_target(1)
+		elif event.is_action_pressed("ui_left"):
+			get_node("/root/battle").change_target(-1)
+		elif event.is_action_pressed("ui_accept"):
+			get_node("/root/battle").fire_the_cannons()

@@ -19,7 +19,7 @@ var translate_speed := 0.1
 var rotate_speed := 0.1
 
 # The node to target.
-var target: NodePath
+var target: Transform
 
 # Enable/disable interpolation
 var enabled = false
@@ -31,8 +31,15 @@ func set_interpolation_enabled(enable):
 func sift_over_to(bullseye, lookat):
 	# bullseye is target to move to
 	# lookat is location to look at, usually, another target's transform.
-	target = bullseye.get_path()
+	target = bullseye
 	looking_at_target = lookat
+
+func zap_over_to(bullseye, lookat):
+	target = bullseye
+	looking_at_target = lookat
+	var target_xform = target
+	target_xform = target_xform.looking_at(looking_at_target, Vector3(0, 1, 0))
+	set_global_transform(target_xform)
 
 
 func set_speed(multiplier):
@@ -44,14 +51,12 @@ func set_speed(multiplier):
 func _process(delta: float) -> void:
 	if not enabled:
 		return
-	if not has_node(target):
-		return
 
 	# TODO: Fix delta calculation so it behaves correctly if the speed is set to 1.0.
 	var translate_factor = translate_speed * delta * 10
 	var rotate_factor = rotate_speed * delta * 10
-	var target_node = get_node(target) as Node
-	var target_xform = target_node.get_global_transform()
+
+	var target_xform = target
 	# Adjust to BattleCamera specs
 	target_xform = target_xform.translated(PULL_BACK)
 	target_xform = target_xform.looking_at(looking_at_target, Vector3(0, 1, 0))

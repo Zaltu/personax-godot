@@ -1,9 +1,12 @@
 extends Spatial
 
-const OFFSET = Vector3(0, 10, 0)
+const OFFSET_ARROW = Vector3(0, 10, 0)
+const OFFSET_HP = Vector3(0, 2, 0)
 
-func hoverover(target):
-	var spritenode = get_node("Arrow")
-	spritenode.global_translate(
-		target.get_global_transform().origin+OFFSET
+func hoverover():
+	$Arrow.translate(
+		OFFSET_ARROW
+	)
+	$Window.translate(
+		OFFSET_HP
 	)
