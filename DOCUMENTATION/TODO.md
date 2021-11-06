@@ -18,3 +18,9 @@ The camera needs to be a bit more responsive once the menus are up...
 
 ### Wind Amp
 Seems to be a battlecost:12 issue with boost type spells... eg Norn
+
+### Spirit Drain
+K:/Git/personax-lua-src/model/data/spells/Spirit Drain.lua:26: attempt to index a nil value
+
+### Multi-Attack
+I think multi-attack attacks are on/off hit or miss right now. Each "smack" should have a hitchance

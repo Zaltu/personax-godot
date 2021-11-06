@@ -30,10 +30,3 @@ func load_personas(persona_list):
 		self.personas[persona].translate(Vector3(0, 7.5, 0))
 		self.personas[persona].set_visible(false)
 		add_child(self.personas[persona])
-
-
-func _fetchPersonaData():
-	return state.sendStateEvent({
-		"key": "battle.personarequest",
-		"personaRequestIndex": self.index
-	}).get("data", {})

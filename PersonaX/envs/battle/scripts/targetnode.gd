@@ -11,18 +11,20 @@ var LOCK_ON = {  # CONST, but funcrefs are apparently not allowed in consts (no 
 
 var arrows = []
 var selectedindex = 0
+var selectedpindex = -1  # Convention for all-target
 
-func allenemy(_allies, enemies):
-	for enemymodel in enemies:
-		display_arrow(enemymodel)
+func allenemy(participants, update):
+	for enemyindex in update["ienemy"]:
+		display_arrow(participants[enemyindex-1])  # Adjust from Lua
 
-func oneenemy(_allies, enemies):
+func oneenemy(participants, update):
 	if selectedindex < 0:
-		selectedindex = len(enemies)-1
-	elif selectedindex >= len(enemies):
+		selectedindex = len(update["ienemy"])-1
+	elif selectedindex >= len(update["ienemy"]):
 		selectedindex = 0
-	display_arrow(enemies[selectedindex])
-	focus_camera(enemies[selectedindex], null)
+	display_arrow(participants[update["ienemy"][selectedindex]-1])  # Lua adjust
+	focus_camera(participants[update["ienemy"][selectedindex]-1], null)  # Lua adjust
+	selectedpindex = update["ienemy"][selectedindex]  # No Lua adjust
 
 func allally(allies, _enemies):
 	for allymodel in allies:
@@ -35,9 +37,11 @@ func oneally(allies, _enemies):
 		selectedindex = 0
 	display_arrow(allies[selectedindex])
 	focus_camera(allies[selectedindex], null)
+	selectedpindex = allies[selectedindex].index
 
 func watashi(_update):  # self TODO
 	display_arrow(get_parent().open)  # Bit meme, might not work
+	selectedpindex = get_parent().open
 
 func display_arrow(model):
 	arrows.append(model.get_node("Target"))
@@ -53,3 +57,4 @@ func free_resources():
 	for arrow in arrows:
 		arrow.set_visible(false)
 	arrows = []
+	selectedpindex = -1
